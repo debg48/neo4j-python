@@ -10,4 +10,8 @@ Output :
 
 <img src="graph.png">
 
-Finally we create a dashboard on NeoDash with out graph data
+Finally we create a dashboard on NeoDash with out graph data:
+
+<img src="image.png">
+
+The dashboard has been saved as dashboard.json for future use
