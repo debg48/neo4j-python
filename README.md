@@ -12,7 +12,7 @@ Output :
 
 Finally we create a dashboard on NeoDash with out graph data:
 
-<img src="image1.png">
+<img src="image (1).png">
 
 The dashboard has been saved as dashboard.json for future use .
 
