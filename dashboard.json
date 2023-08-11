@@ -1,0 +1,172 @@
+{
+  "title": "Arxiv Paper Data Dashboard",
+  "version": "2.3",
+  "settings": {
+    "pagenumber": 0,
+    "editable": true,
+    "fullscreenEnabled": false,
+    "parameters": {}
+  },
+  "pages": [
+    {
+      "title": "Main Page",
+      "reports": [
+        {
+          "id": "e20f063c-5a91-4dfe-b7cd-3f1d1e4f47b2",
+          "title": "Graph Database Structure",
+          "query": "MATCH (a)-[e]->(p) RETURN a,e,p LIMIT 300\n\n\n",
+          "width": 4,
+          "height": 2,
+          "x": 0,
+          "y": 0,
+          "type": "graph",
+          "selection": {
+            "Paper": "title",
+            "IN_CATEGORY": "(label)",
+            "Category": "category",
+            "Author": "name",
+            "AUTHORED": "(label)"
+          },
+          "settings": {
+            "nodeColorScheme": "set3",
+            "frozen": true
+          },
+          "schema": [
+            [
+              "Paper",
+              "id",
+              "title"
+            ],
+            [
+              "IN_CATEGORY"
+            ],
+            [
+              "Category",
+              "category"
+            ],
+            [
+              "Author",
+              "name"
+            ],
+            [
+              "AUTHORED"
+            ]
+          ]
+        },
+        {
+          "id": "b6be9ac1-737c-44f2-964d-63d756b66891",
+          "title": "List of Papers and Author",
+          "query": "MATCH (a)-[e]->(p)-[r]->(c)\nRETURN a.name as AuthorName,\nc.category as Category,\np.title as PaperTitle\nLIMIT 100\n\n\n",
+          "width": 5,
+          "height": 2,
+          "x": 4,
+          "y": 0,
+          "type": "table",
+          "selection": {},
+          "settings": {
+            "downloadImageEnabled": true,
+            "backgroundColor": "#EAE4E400"
+          },
+          "schema": []
+        },
+        {
+          "id": "4ddfdc32-4dff-407e-b3c2-4bf1eb56e8f6",
+          "title": "Categories of Papers",
+          "query": "MATCH (a)-[e]->(p)-[r]->(c)\nRETURN c.category as Category, \n       count(p.title) as Papers\nlimit 10\n",
+          "width": 3,
+          "height": 2,
+          "x": 9,
+          "y": 0,
+          "type": "bar",
+          "selection": {
+            "index": "Category",
+            "value": "Papers",
+            "key": "(none)"
+          },
+          "settings": {},
+          "schema": []
+        },
+        {
+          "id": "a94d1b64-da74-44d7-b996-15662c4e9900",
+          "title": "Total Papers",
+          "query": "MATCH (a)-[e]->(p)-[r]->(c)\nRETURN count(DISTINCT p.title)\n\n",
+          "width": 2,
+          "height": 1,
+          "x": 0,
+          "y": 2,
+          "type": "value",
+          "selection": {},
+          "settings": {},
+          "schema": []
+        },
+        {
+          "id": "433e8fa4-ed5a-4f94-a9a7-e833ac55ab1b",
+          "title": "Total Categories",
+          "query": "MATCH (a)-[e]->(p)-[r]->(c)\nRETURN count(DISTINCT c.category)\n\n\n\n\n",
+          "width": 4,
+          "height": 1,
+          "x": 0,
+          "y": 3,
+          "type": "value",
+          "selection": {},
+          "settings": {},
+          "schema": []
+        },
+        {
+          "id": "ee801c0d-5e2e-4140-aad0-fa922ba7c572",
+          "title": "Different Categories of Papers",
+          "query": "MATCH (a)-[e]->(p)-[r]->(c)\nRETURN \nc.category,\ncount(c.category) as Categories\n\n\n\n\n       \n\n\n",
+          "width": 4,
+          "height": 2,
+          "x": 4,
+          "y": 2,
+          "type": "pie",
+          "selection": {
+            "index": "c.category",
+            "value": "Categories",
+            "key": "(none)"
+          },
+          "settings": {},
+          "schema": []
+        },
+        {
+          "id": "c2674ebf-b091-4300-974f-5664a22f1174",
+          "title": "Authors vs Categories",
+          "query": "MATCH (a)-[e]->(p)-[r]->(c)\nRETURN \nc.category as Categories,\ncount(DISTINCT a.name) as Authors\nlimit 10\n\n",
+          "width": 4,
+          "height": 2,
+          "x": 8,
+          "y": 2,
+          "type": "bar",
+          "selection": {
+            "index": "Categories",
+            "value": "Authors",
+            "key": "(none)"
+          },
+          "settings": {
+            "colors": "nivo"
+          },
+          "schema": []
+        },
+        {
+          "id": "1091a3b0-c8e0-4f10-b178-88557cf3ff97",
+          "title": "Total Authors",
+          "query": "MATCH (a)-[e]->(p)-[r]->(c)\nRETURN count(DISTINCT a.name)\n\n",
+          "width": 2,
+          "height": 1,
+          "x": 2,
+          "y": 2,
+          "type": "value",
+          "selection": {},
+          "settings": {},
+          "schema": []
+        }
+      ]
+    }
+  ],
+  "parameters": {},
+  "extensions": {
+    "active": true,
+    "activeReducers": []
+  }
+}
