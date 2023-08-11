@@ -12,6 +12,8 @@ Output :
 
 Finally we create a dashboard on NeoDash with out graph data:
 
-<img src="image.png">
+<img src="image1.png">
 
-The dashboard has been saved as dashboard.json for future use
+The dashboard has been saved as dashboard.json for future use .
+
+We can load the file in NeoDash to visualize the dashboard again.
