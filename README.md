@@ -9,3 +9,5 @@ The following query was run to vizualize the database:
 Output :
 
 <img src="graph.png">
+
+Finally we create a dashboard on NeoDash with out graph data
